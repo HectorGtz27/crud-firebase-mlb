@@ -34,6 +34,11 @@ export default function Home() {
     loadPlayers()
   }
 
+  const handleUpdate = async (id: string, newHomeruns: number) =>{
+    await updatePlayer(id, { homeruns: newHomeruns });
+    loadPlayers();
+  }
+
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
 
@@ -61,7 +66,12 @@ export default function Home() {
               <td>{p.name}</td>
               <td>{p.team}</td>
               <td>{p.homeruns}</td>
+              <td>
+                <button onClick={()=> p.id && handleUpdate(p.id, p.homeruns + 1)}>+HR</button>
+                <button onClick={()=> p.id && handleUpdate(p.id, p.homeruns - 1)}>-HR</button>
+              </td>
             </tr>
+
           ))}
         </tbody>
       </table>
