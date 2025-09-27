@@ -39,6 +39,11 @@ export default function Home() {
     loadPlayers();
   }
 
+  const handleDelete = async (id: string) => {
+    await deletePlayer(id);
+    loadPlayers();
+  }
+
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
 
@@ -69,6 +74,7 @@ export default function Home() {
               <td>
                 <button onClick={()=> p.id && handleUpdate(p.id, p.homeruns + 1)}>+HR</button>
                 <button onClick={()=> p.id && handleUpdate(p.id, p.homeruns - 1)}>-HR</button>
+                <button onClick={()=> p.id && handleDelete(p.id)}>Eliminar</button>
               </td>
             </tr>
 
