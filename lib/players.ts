@@ -12,7 +12,7 @@ export async function addPlayer(player: Omit<Player, "id">){
 
 
 // Read
-export async function getPlaters(): Promise<Player[]>{
+export async function getPlayers(): Promise<Player[]>{
     const snapshot = await getDocs(playersCol)
     return snapshot.docs.map((docsSnap)=> ({
         id: docsSnap.id,
@@ -27,7 +27,7 @@ export async function updatePlayer(id: string, data: Partial<Player>){
 }
 
 // Delete 
-export async function deletePlater(id: string){
+export async function deletePlayer(id: string){
     const playerRef = doc(db, "players", id);
     return await deleteDoc(playerRef)
 
