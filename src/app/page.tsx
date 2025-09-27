@@ -41,7 +41,7 @@ export default function Home() {
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder="Nombre"  value={form.name} onChange={(e)=> setForm({...form, name: e.target.value})} required/>
         <input type="text" placeholder="Equipo"  value={form.team} onChange={(e)=> setForm({...form, team: e.target.value})} required />
-        <input type="number" placeholder="HomeRuns"  value={form.homeruns} onChange={(e)=> setForm({...form, homeruns: Number(e.target.value)})} required/>
+        <input type="number" placeholder="Home Runs"  value={form.homeruns === 0 ? "" : form.homeruns} onChange={(e)=> setForm({...form, homeruns: e.target.value === "" ? 0 : Number(e.target.value)})} required/>
         <button type="submit">Agregar</button>
       </form>
 
